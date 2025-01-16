@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水质评价系统</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+<nav>
+    <img src="images/logo.png" alt="Logo" class="nav-logo">
+    <span class="nav-left-text">水质指数计算系统</span>
+    <ul>
+        <li onclick="showSection('CWQI')">水质指数CWQI的计算</li>
+        <li onclick="showSection('imageToExcel')">图片转Excel功能</li>
+        <li onclick="showSection('standards')">计算说明</li>
+    </ul>
+</nav>
+
+<div class="content">
+    <!-- CWQI 计算部分 -->
+    <div id="CWQI" class="section" style="display:block;">
+        <h2>水质指数CWQI的计算</h2>
+        <p>请上传包含水质参数的Excel文件:</p>
+        <input type="file" id="fileInput" accept=".xlsx, .xls">
+        <button onclick="processFile()">计算CWQI</button>
+        <button onclick="exportToExcel()" style="display:none;" id="exportButton">导出结果为Excel</button>
+        <p id="output"></p>
+        <p class="header-text">原始数据Excel示例</p>
+        <img src="images/excel数据填写示例.png" alt="原始excel示意图" class="cwqi-image">
+    </div>
+
+    <!-- 图片转Excel功能部分 -->
+    <div id="imageToExcel" class="section" style="display:none;">
+        <h2>图片转Excel功能</h2>
+        <p>请上传包含水质数据的图片文件:</p>
+        <input type="file" id="imageInput" accept="image/*">
+        <button onclick="convertImage()">进行转化</button>
+        <button onclick="exportImageData()" style="display:none;" id="exportImageButton">导出文件</button>
+        <div class="progress-container">
+            <progress id="imageConversionProgress" value="0" max="100" style="width:100%"></progress>
+            <span id="progressPercentage">0%</span>
+        </div>
+        <p id="imageOutput"></p>
+    </div>
+
+    <!-- 计算说明部分 -->
+    <div id="standards" class="section" style="display:none;">
+        <h2>1.计算依据</h2>
+        <p class="indent-1">依据《城市地表水环境质量排名技术规定(试行)》(环办监测(2017)51号)，对地级及以上城市国家地表水考核断面水环境质量进行排名，具体方法为：
+            采用《地表水环境质量标准》(GB3838-2002)中除水温、粪大肠菌群和总氮以外的21项指标,计算各湖泊水质综合指数(CWQI),再将湖泊水质综合指数由小到大排序，得出其排名。
+            2020年12月生态环境部印发了《"十四五"国家地表水监测及评价方案(试行)》,明确"十四五"国家地表水按"9+X"方式进行监测,按"5+X"方式进行评价,
+            即:pH、溶解氧、高锰酸盐指数、氨氮、总磷等5项基本指标及该断面的"X"特征指标。</p>
+         <p class="indent-2">(1)基于水质综合指数法的水环境质量排名,依据《城市地表水环境质量排名技术规定(试行)》(环办监测(2017)51号)，对研究区国家地表水考核断面水环境质量进行排名，具体方法为：</p>
+         <p class="indent-3">计算研究区的水质综合指数(CWQI):</p>
+         <p class="indent-3">(a)基于河流监测断面的各单项指标浓度的算术平均值和该水质指标地表水Ⅲ类标准限值,计算出单项指标的水质指数。低于检出限的项目,按照 1/2 检出限值参加计算各单项指标浓度的算术平均值。</p>
+         <p class="indent-3">(b)综合计算出河流的水质指数CWQI河流及湖库水质指数CWQI湖库。</p>
+         <p class="indent-4">根据各单项指标的CWQI,取其加和值即为河流的CWQI河流。</p>
+         <p class="indent-4">湖库水质指数(CWQI湖库)计算方法与河流一致。</p>
+         <p class="indent-3">(c)计算各研究区的水质综合指数(CWQI),再将水质综合指数由小到大排序,得出各区域排名。</p>
+         <p class="indent-2">(2)根据研究区行政区域内河流和湖库的CWQI,取其加权均值即为该研究区的 CWQI。加权值采用区域的河流断面数和湖库的点位数。若研究区仅有河流断面,无湖库点位，则取河流水质指数为该研究区的水质指数。</p>
+         <p class="indent-5">《地表水环境质量标准(GB3838-2002)》</p>
+
+        <div class="parent-container">
+            <img src="images/地表水环境质量标准.png" class="standard-image" alt="地表水环境质量标准示意图"> 
+        </div>
+
+        <h2>2.数据来源</h2>
+         <p class="indent-1">本网站使用的水质数据来自国家水资源局水质监测中心，数据更新频率为每日更新,具体网址为: <a href="https://szzdjc.cnemc.cn:8070/GJZ/Business/Publish/Main.html" target="_blank" rel="noopener noreferrer">国家水质综合自动监管平台</a></p>
+        <h2>3.联系我们</h2>
+         <p class="indent-1">邮箱：3408732880.@qq.com<EMAIL></p>
+         <p class="indent-1">地址：天津市西青区津静公路xx号</p>
+    </div>
+</div>
+
+<footer>
+    <p>版权所有 &copy; <a href="https://www.tjau.edu.cn/" target="_blank">天津农学院</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif; /* 设置全局字体为Arial，备选为sans-serif */
+    margin: 0; /* 清除默认外边距 */
+    padding: 0; /* 清除默认内边距 */
+    line-height: 1.6; /* 增加行高，提升可读性 */
+}
+
+
+/*调整导航栏 */
+nav {
+    background-color: rgb(123, 73, 183); /* 设置导航栏背景颜色 */
+    padding: 0 20px; /* 增加左右内边距 */
+    height: 70px; /* 固定导航栏的高度 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加轻微阴影效果 */
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直居中对齐 */
+}
+
+nav ul {/* 导航栏样式 */
+    list-style-type: none; /* 删除列表项前的默认项目符号 */
+    padding: 0; /* 清除内部填充 */
+    display: flex; /* 使用弹性布局以横向排列列表项 */
+    justify-content: flex-end; /* 列表项在主轴上右对齐 */
+    align-items: center; /* 列表项在交叉轴上垂直居中 */
+    gap: 10px; /* 添加列表项之间的间距 */
+}
+
+nav ul li {
+    color: white; /* 设置列表项文字颜色 */
+    cursor: pointer; /* 鼠标悬停时显示为可点击风格 */
+    padding: 8px 20px; /* 增加内边距 */
+    text-align: center; /* 文本居中对齐 */
+    transition: background-color 0.3s; /* 背景颜色改变时添加平滑过渡 */
+    font-size: 14px; /* 增大字体大小 */
+}
+
+nav ul li:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* 鼠标悬停时改变背景颜色，调整透明度 */
+    text-decoration: underline; /* 鼠标悬停时添加下划线 */
+}
+/*调整导航栏 */
+
+
+/* 导航栏左侧文字 */
+.nav-left-text {
+    color: white; /* 设置文字颜色 */
+    font-size: 24px; /* 调整字体大小 */
+    margin-right: auto; /* 自动分配右边的外边距，以推动列表项到右侧 */
+    margin-left: 10px; /* 增加左侧间距 */
+}
+/* 导航栏左侧文字 */
+
+
+/* “cwqi计算部分”文字以及图片 */
+.header-text {
+    color: red; /* 调整文字颜色为蓝色 */
+    font-weight: bold; /* 加粗文字 */
+    margin-bottom: 15px; /* 增加下方间距 */
+}
+
+.cwqi-image {
+    max-width: 40%; /* 调整图片的最大宽度 */
+    height: auto; /* 根据最大宽度自动保持高度比例 */
+    margin-top: 10px; /* 增加图片顶部的外边距 */
+}
+/* “cwqi计算部分”文字以及图片 */
+
+
+/* 调整logo图片 */
+.nav-logo {
+    width: 60px; /* 调整图片的宽度 */
+    height: auto; /* 保持图片的高度比例 */
+    margin-right: 15px; /* 增加图片右侧间距 */
+    margin-left: 20px; /* 增加图片左侧间距 */
+}
+/* 调整logo图片 */
+
+
+/* 设置页脚 */
+.content {
+    padding: 20px; /* 设置内容区域的内边距 */
+    padding-bottom: 60px; /* 增加底部内边距，避免被页脚遮挡 */
+    border-top: 2px solid white; /* 添加顶部边框，与导航栏颜色一致 */
+}
+
+/* 针对第二个页面的内容区域 */
+#standards {
+    min-height: calc(100vh - 150px); /* 动态计算最小高度 */
+    padding-bottom: 60px; /* 增加底部内边距，避免被页脚遮挡 */
+}
+
+footer {
+    background-color: rgb(123, 73, 183); /* 设置页脚背景颜色 */
+    color: white; /* 设置页脚文字颜色为白色 */
+    text-align: center; /* 文本在页脚居中对齐 */
+    padding: 3px 0; /* 设置页脚上下的内边距 */
+    position: fixed; /* 固定位置，使页面滚动时页脚保持在底部 */
+    width: 100%; /* 页脚宽度为100% */
+    bottom: 0; /* 将页脚定位在页面底部 */
+    font-size: 10px; /* 设置页脚字体大小 */
+}
+/* 设置页脚 */
+
+
+/* 控制“计算说明”文本的缩进。 */
+.indent-1 {
+    text-indent: 2em; /* indent-1的缩进 */
+}
+
+.indent-2 {
+    text-indent: 4em; /* indent-2的缩进 */
+}
+
+.indent-3 {
+    text-indent: 6em; /* indent-3的缩进 */
+}
+.indent-4 {
+    text-indent: 7em; /* indent-4的缩进 */
+}
+.indent-5 {
+    text-indent: 40%; /* indent-5的缩进 */
+}
+/* 控制“计算说明”文本的缩进。 */
+
+
+/* 控制“计算说明”页面图片。 */
+.parent-container {
+    text-align: center; /* 使子元素（图片）水平居中 */
+}
+.standard-image {
+    width: 50%; /* 调整图片宽度 */
+    height: auto; /* 自动调整高度以保持比例 */
+    margin: 5px 0; /* 增加上下间距 */
+    padding: 2px 0; /* 添加上下内边距，增加容错空间 */
+}
+/* 控制“计算说明”页面图片。 */
+
+/* 图片转Excel页面样式 */
+#imageToExcel {
+    min-height: calc(100vh - 150px); /* 动态计算最小高度，确保内容区域足够大 */
+    padding-bottom: 60px; /* 增加底部内边距，避免内容被页脚遮挡 */
+}
+
+#imageInput {
+    margin: 15px 0; /* 添加上下外边距 */
+    padding: 8px; /* 增加内边距 */
+    border: 1px solid #ccc; /* 添加浅灰色边框 */
+    border-radius: 4px; /* 添加圆角 */
+}
+
+#imageOutput {
+    margin-top: 20px; /* 添加上边距 */
+    padding: 15px; /* 增加内边距 */
+    background-color: #f5f5f5; /* 设置浅灰色背景 */
+    border-radius: 4px; /* 添加圆角 */
+}
+
+#exportImageButton {
+    margin-top: 15px; /* 添加上边距 */
+    padding: 8px 20px; /* 设置按钮内边距 */
+    background-color: #4CAF50; /* 设置绿色背景 */
+    color: white; /* 设置白色文字 */
+    border: none; /* 去除边框 */
+    border-radius: 4px; /* 添加圆角 */
+    cursor: pointer; /* 鼠标悬停时显示手型 */
+}
+
+#exportImageButton:hover {
+    background-color: #45a049; /* 鼠标悬停时加深背景颜色 */
+}
+/* 图片转Excel页面样式 */
